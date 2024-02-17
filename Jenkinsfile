@@ -2,7 +2,7 @@ pipeline {
     agent any //Quem vai executar ex: Imagem docker, maquina windows
 
     stages {
-        stage`('Get Source') {
+        stage('Get Source') {
             steps {
                 git url:'https://github.com/JamesonAbade/pedelogo-catalogo', branch: 'main'
             }
