@@ -27,9 +27,9 @@ pipeline {
             }
         }
 
-        stage('Deploy Kubermetes') {
+        stage('Deploy Kubernetes') {
             agent {
-                Kubermetes {
+                Kubernetes {
                     cloud'kubernetes'
                 }
             }
