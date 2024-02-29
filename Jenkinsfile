@@ -30,7 +30,7 @@ pipeline {
         stage('Deploy Kubernetes') {
             agent {
                 kubernetes {
-                    cloud 'kubeuesb'
+                    cloud 'registry-uesb'
                 }
             }
             environment {
