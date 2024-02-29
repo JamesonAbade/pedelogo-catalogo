@@ -29,8 +29,8 @@ spec:
               value: mongo-service
             - name: Mongo__DataBase
               value: admin
-            - name: DOCKER_CLI_AKV2_USE_UNSAFE_INSECURE_REGISTRY
-              value: "1"
+            # - name: DOCKER_CLI_AKV2_USE_UNSAFE_INSECURE_REGISTRY
+            #   value: "1"
 
 ---
 apiVersion: v1
