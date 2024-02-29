@@ -14,8 +14,6 @@ spec:
       containers:
         - name: api
           image: registry-uesb:5000/pedelogo-catalogo:{{tag}}
-          imagePullSecrets:
-            - name: registry-uesb
           ports:
             - containerPort: 80
           imagePullPolicy: Always
@@ -29,8 +27,6 @@ spec:
               value: mongo-service
             - name: Mongo__DataBase
               value: admin
-            # - name: DOCKER_CLI_AKV2_USE_UNSAFE_INSECURE_REGISTRY
-            #   value: "1"
 
 ---
 apiVersion: v1
