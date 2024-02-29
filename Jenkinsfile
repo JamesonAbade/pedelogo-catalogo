@@ -27,21 +27,15 @@ pipeline {
             }
         }
 
-        stage('Deploy Kubernetes') {
-            agent {
-                kubernetes {
-                    cloud 'registry-uesb'
-                }
-            }
+        stage('Deploy Kubernetes'){
             environment {
                 tag_version = "${env.BUILD_ID}"
             }
 
             steps {
-                withKubeConfig([credentialsId: 'kubeconfig']){
+                withKubeConfig([credentialsId: 'kubeconfig']) {
                     sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/api.yaml'
-                    sh 'cat ./k8s/api.yaml'
-                kubernetesDeploy(configs: '**/k8s/**', kubeconfigId: 'kubeconfig')
+                    sh 'kubectl apply -f k8s/api.yaml -f k8s/mongo.yaml'
                 }
             }
         }
