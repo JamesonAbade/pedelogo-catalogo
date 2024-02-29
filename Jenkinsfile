@@ -19,7 +19,7 @@ pipeline {
         stage('Docker Push Image') {
             steps {
                 script {
-                    docker.withRegistry('registry-uesb:5000', 'resgistry-uesb') {
+                    docker.withRegistry('http://registry-uesb:5000', 'resgistry-uesb') {
                         dockerapp.push('latest')
                         dockerapp.push("${env.BUILD_ID}")
                     }
