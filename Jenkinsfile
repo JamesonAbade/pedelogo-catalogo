@@ -11,7 +11,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    dockerapp = docker.build("jamesonabade/pedelogo-catalogo:${env.BUILD_ID}", '-f ./src/PedeLogo.Catalogo.Api/Dockerfile .')
+                    dockerapp = docker.build("registry-uesb:5000/pedelogo-catalogo:${env.BUILD_ID}", '-f ./src/PedeLogo.Catalogo.Api/Dockerfile .')
                 }
             }
         }
@@ -19,7 +19,7 @@ pipeline {
         stage('Docker Push Image') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                    docker.withRegistry('http://registry-uesb:5000', 'dockerhub') {
                         dockerapp.push('latest')
                         dockerapp.push("${env.BUILD_ID}")
                     }
